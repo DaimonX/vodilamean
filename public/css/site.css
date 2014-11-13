@@ -1,0 +1,15 @@
+body {
+  padding-top: 100px;
+  border: solid 5px;
+}
+.navbar-header a.navbar-brand {
+  border: solid 5px;
+  margin-top: 10px;
+  margin-bottom: -20px;
+}
+.navbar-inverse a.navbar-brand {
+  color: #fadede;
+}
+footer p {
+  border-top: 1px solid #128f76;
+}

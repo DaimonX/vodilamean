@@ -8,5 +8,5 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 });
 
 angular.module('app').controller('mainCtrl', function($scope) {
-  $scope.myVar = "Msg from Angular 'mainCtrl'";
+  $scope.myVar = " То чувстов когда заебашил хеловворлд";
 });
