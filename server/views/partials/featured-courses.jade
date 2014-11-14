@@ -1,3 +1,6 @@
 .panel.panel-primary
 	.panel-heading.text-center Featured Courses
-	.panel-body Body Goes Here
+	.panel-body 
+		.row(ng-repeat="car in cars")
+			.col-md-3(ng-bind="car.name")
+			.col-md-3(ng-bind="car.number")
