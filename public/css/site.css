@@ -21,7 +21,17 @@ body {
   margin-bottom: 20px;
   border: solid 2px;
 }
-.backjumbo p,
 footer p {
   border-top: 1px solid #128f76;
+}
+.form-inline .form-group {
+  padding-top: 20px;
+  margin-left: 10px;
+}
+button {
+  padding-top: 0px;
+  margin-left: 0px;
+}
+.navabar-form.form-inline button {
+  margin: 20px 0 0 10px;
 }
