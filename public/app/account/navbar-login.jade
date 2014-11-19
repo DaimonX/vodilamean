@@ -1,7 +1,7 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
-	form.navabar-form.form-inline
+	form.navabar-form.form-inline(ng-hide="identity.isAuthenticated()")
 		.form-group
-			input.form-control(placeholder="Email", ng-model="username")
+			input.form-control(placeholder="Имя пользовотеля", ng-model="username")
 		.form-group
-			input.form-control(type="password", placeholder="Password", ng-model="password")		
-		button.btn.btn-primary(ng-click="signIn(username,password)") Sign In
+			input.form-control(type="password", placeholder="Пароль", ng-model="password")		
+		button.btn.btn-primary(ng-click="signIn(username,password)") Вход

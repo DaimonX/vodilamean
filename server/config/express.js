@@ -2,6 +2,9 @@ var express = require('express');
 var stylus = require('stylus');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var session = require('express-session');
 
 module.exports = function(app, config) {
   //set view engine
@@ -13,6 +16,15 @@ module.exports = function(app, config) {
   app.set('view engine', 'jade');
   app.use(logger('dev'));
   app.use(bodyParser.json());
+  app.use(cookieParser());
+  app.use(session({secret:'vodilamean',
+                   saveUninitialized: true,
+                   resave: true}));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+
+
   app.use(stylus.middleware({
       src: config.rootPath + '/public',
       compile: compile
