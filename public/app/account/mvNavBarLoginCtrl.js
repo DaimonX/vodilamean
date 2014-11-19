@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mvIdentity, mvNotifier, mvAuth) {
+angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, $location, mvIdentity, mvNotifier, mvAuth) {
   $scope.identity = mvIdentity;
   $scope.signIn = function(username, password) {
     console.log(username + " " + password);
@@ -9,6 +9,15 @@ angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mv
     	}else{
     		mvNotifier.notifyError('Неверный логин или пароль');
     	}
+    });
+  }
+
+  $scope.signOut = function() {
+    mvAuth.logOutUser().then(function(){
+      $scope.username = "";
+      $scope.password = "";
+      mvNotifier.notifyError('Вы разлогинились !');
+      $location.path('/');
     });
   }
 });
