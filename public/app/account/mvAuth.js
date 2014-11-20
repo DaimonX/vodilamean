@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app').factory('mvAuth', function($http, mvIdentity, $q) {
+angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser){
     return {
         authenticateUser: function(username, password) {
             var dfd = $q.defer();
@@ -9,12 +9,12 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q) {
                 })
                 .then(function(response) {
                     if (response.data.success) {
-                        mvIdentity.currentUser = response.data.user;
+                        var user = new mvUser();
+                        angular.extend(user, response.data.user);
+                        mvIdentity.currentUser = user;
                         dfd.resolve(true);
-                        //mvNotifier.notify('You have successfully signed in !');
                     } else {
                         dfd.resolve(false);
-                        //mvNotifier.notify('Incorrect');
                     }
             });
         	return dfd.promise;

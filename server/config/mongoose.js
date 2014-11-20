@@ -11,10 +11,11 @@ module.exports = function(config) {
 
   var userSchema = mongoose.Schema({
   	firstName: String,
-  	listName: String,
+  	lastName: String,
   	userName :String,
     salt: String,
-    hash_pwd: String
+    hash_pwd: String,
+    roles:[String]
   });
   userSchema.methods = {
     authenticate: function(passwordToMatch) {
@@ -28,10 +29,10 @@ module.exports = function(config) {
       var salt, hash;
       salt =  createSalt();
       hash = hashPwd(salt,'111');
-  		User.create({firstName:'Dima', lastName:'Dimonovich', userName:'Dx', salt: salt, hash_pwd:hash});
+  		User.create({firstName:'Dima', lastName:'Dimonovich', userName:'Dx', salt: salt, hash_pwd:hash, roles:['admin']});
       salt =  createSalt();
       hash = hashPwd(salt,'222');
-      User.create({firstName:'Andriy', lastName:'Andriyovich', userName:'Andriy', salt: salt, hash_pwd:hash})
+      User.create({firstName:'Andriy', lastName:'Andriyovich', userName:'Andriy', salt: salt, hash_pwd:hash, roles:[]})
   	}
   })
 }
