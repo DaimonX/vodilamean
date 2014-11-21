@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser){
+angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) {
     return {
         authenticateUser: function(username, password) {
             var dfd = $q.defer();
@@ -16,18 +16,39 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser){
                     } else {
                         dfd.resolve(false);
                     }
-            });
-        	return dfd.promise;
+                });
+            return dfd.promise;
 
         },
-        logOutUser:function(){
+        logOutUser: function() {
             var dfd = $q.defer();
-            $http.post('/logout', {logout:true}).then(function(){
+            $http.post('/logout', {
+                logout: true
+            }).then(function() {
                 mvIdentity.currentUser = undefined;
                 dfd.resolve();
             });
             return dfd.promise;
-        }
-    }					
-})
+        },
+        createUser:function(newUserData){
+            var newUser = new mvUser(newUserData);
+            var dfd = $q.defer();
 
+            newUser.$save().then(function(){
+                mvIdentity.currentUser = newUser;
+                dfd.resolve();
+            }, function(response){
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        authorizeCurrentUserForRoute: function(role) {
+            if (mvIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
+        }
+    }
+});

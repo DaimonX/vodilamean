@@ -1,5 +1,8 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
 	form.navabar-form.form-inline(ng-hide="identity.isAuthenticated()")
+		ul.nav.navbar-nav
+			li
+				a(href="/signup") Sign up
 		.form-group
 			input.form-control(placeholder="Имя пользовотеля", ng-model="username")
 		.form-group

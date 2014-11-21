@@ -1,5 +1,6 @@
 .container
-	a Список зарегестрированных пользователей
-	table.table
-		tr(ng-repeat="user in users")
-			td {{user.firstName + ' ' + user.userName+ ' '+user.lastName}}
+	.user-list
+		a Список зарегестрированных пользователей.[user-list.jade Controller: {{titles}}]
+		table.table
+			tr(ng-repeat="user in users")
+				td {{user.firstName + ' ' + user.userName+ ' '+user.lastName}}
