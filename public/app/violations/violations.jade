@@ -1,0 +1,13 @@
+.container(ng-controller="dxViolCtrl")
+	h2 Нарушения
+	table.table.table-bordered
+		tr
+			td.col-md-1 Модель автомобиля
+			td.col-md-2 Номерной знак
+			td.col-md-2 Описание
+			td.col-md-2 Дата
+		tr(ng-repeat="user in myData")
+			td.col-md-1{{user.name}}
+			td.col-md-1{{user.number}}
+			td.col-md-1{{user.number}}
+			td.col-md-1{{user.published | date:'yyyy-MM-dd'}}

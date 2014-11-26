@@ -5,12 +5,13 @@ block main-content
 		.container
 			.navbar-header
 				a.navbar-brand(href="/") Vodilamean
-					h6 -Bad drivers
 			.navbar-collapse.collapse
 				div(ng-include="'/partials/account/navbar-login'")
 				ul.nav.navbar-nav
 					li
-						a(href="/") Home
+						a(href="/") Главная
+					li
+						a(href="/violations") Нарушения
 			
 	section.content
 		div(ng-view)

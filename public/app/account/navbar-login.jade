@@ -11,10 +11,12 @@
 	ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
 		li.dropdown
 			a.dropdown-toggle(href="", data-toggle="dropdown")
-				| {{identity.currentUser.firstName + " " + identity.currentUser.LastName}}
-				b.caret
+				| {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+				b.caretp
 			ul.dropdown-menu
 				li(ng-show="identity.currentUser.isAdmin()")
 					a(href="/admin/users") User admin
+				li
+					a(href="/profile" ng-click="updateProfile()") Профиль
 				li
 					a(href="" ng-click="signOut()") Выход	

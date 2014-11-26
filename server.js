@@ -14,7 +14,7 @@ require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 
 //passport
-require('./server/config/passport')(config);
+require('./server/config/passport')();
 
 //load route
 require('./server/config/routes')(app);

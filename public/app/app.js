@@ -1,5 +1,5 @@
 'use strict'
-var app = angular.module('app', ["ngResource", "ngRoute"]);
+var app = angular.module('app', ["ngResource", "ngRoute", "ngTable"]);
 app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
 
@@ -8,7 +8,13 @@ app.config(['$routeProvider', '$locationProvider',
                 auth: function(mvAuth, $q) {
                     return mvAuth.authorizeCurrentUserForRoute('admin');
                 }
-            }
+            },
+            user: {
+                auth: function(mvAuth, $q) {
+                    return mvAuth.authorizeAuthenticatedUserForRoute();
+                }
+            },
+
         };
 
         $locationProvider.html5Mode(true);
@@ -21,6 +27,16 @@ app.config(['$routeProvider', '$locationProvider',
                 templateUrl: '/partials/admin/user-list',
                 controller: 'mvUserListCtrl'
                 //resolve: routeRoleChecks.admin
+            })
+            .when('/profile', {
+                templateUrl: '/partials/account/profile',
+                controller: 'mvProfileCtrl'
+                //resolve: routeRoleChecks.user
+            })
+            .when('/violations', {
+                templateUrl: '/partials/violations/violations',
+                controller: 'dxViolCtrl'
+                //resolve: routeRoleChecks.user
             })
             .when('/signup', {
                 templateUrl: '/partials/account/signup',

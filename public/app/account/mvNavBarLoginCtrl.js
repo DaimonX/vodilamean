@@ -1,6 +1,8 @@
 'use strict'
 angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, $location, mvIdentity, mvNotifier, mvAuth) {
+  
   $scope.identity = mvIdentity;
+  
   $scope.signIn = function(username, password) {
     console.log(username + " " + password);
     mvAuth.authenticateUser(username, password).then(function(success){

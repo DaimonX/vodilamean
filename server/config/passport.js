@@ -5,13 +5,18 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 module.exports = function() {
-    passport.use(new LocalStrategy(
-        function(username, password, done) {
-            User.findOne({userName: username}).exec(function(err, user) {
+    passport.use(new LocalStrategy({
+        usernameField: 'userName',
+        passwordField: 'password'
+    },
+        function(userName, password, done) {
+            User.findOne({userName: userName}).exec(function(err, user) {
                 if (user && user.authenticate(password)) {
                     return done(null, user);
+
                 } else {
                     return done(null, false);
+                    
                 }
             })
         }

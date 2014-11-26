@@ -1,9 +1,13 @@
 var passport = require('passport');
+
 exports.authenticate = function(req, res, next) {
+    req.body.userName = req.body.userName.toLowerCase();
+    console.log(req.body.userName);
     var auth = passport.authenticate('local', function(err, user) {
         if (err) {
             return next(err);
         }
+        
         if (!user) {
             res.send({
                 success: false
@@ -28,6 +32,14 @@ exports.requiresApiLogin = function(req,res,next) {
         res.end();
     } else {
         next();
+    }
+};
+
+exports.authorizeAuthenticatedUserForRoute = function(){
+    if(mvIdentity.isAuthenticated()){
+        return true;
+    } else {
+        return $q.reject('not authorized');
     }
 };
 

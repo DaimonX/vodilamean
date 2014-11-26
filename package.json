@@ -22,6 +22,7 @@
     "mongodb": "^1.4.19",
     "mongoose": "^3.8.19",
     "morgan": "^1.5.0",
+    "ng-grid": "^2.0.1",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "stylus": "^0.49.3"
