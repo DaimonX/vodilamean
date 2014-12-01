@@ -11,11 +11,12 @@ module.exports = function(app, config) {
   function compile(str, path) {
     return stylus(str).set('filename', path);
   }
-
+  //view engines config
   app.set('views', config.rootPath + '/server/views');
   app.set('view engine', 'jade');
+  
   app.use(logger('dev'));
-  app.use(bodyParser.json());
+  app.use(bodyParser.json()); //req.body....
   app.use(cookieParser());
   app.use(session({secret:'vodilamean',
                    saveUninitialized: true,

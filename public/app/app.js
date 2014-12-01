@@ -38,6 +38,11 @@ app.config(['$routeProvider', '$locationProvider',
                 controller: 'dxViolCtrl'
                 //resolve: routeRoleChecks.user
             })
+            .when('/violations/add', {
+                templateUrl: '/partials/violations/addviolation',
+                controller: 'dxViolCtrl'
+                //resolve: routeRoleChecks.user
+            })
             .when('/signup', {
                 templateUrl: '/partials/account/signup',
                 controller: 'mvSignUpCtrl'

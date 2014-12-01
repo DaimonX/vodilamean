@@ -40,6 +40,9 @@ button {
   padding-top: 0px;
   margin-left: 10px;
 }
+h2 form.add {
+  display: inline-block;
+}
 .navabar-form.form-inline {
   margin: 10px 0 0 10px;
 }
@@ -49,6 +52,10 @@ button {
 .toast-success {
   background-color: #13987e;
 }
+.table th {
+  background-color: #13987e;
+}
+.table th,
 .table td {
   text-align: center;
 }
