@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var userModel = require('../models/User');
+var violation = require('../models/Violation');
 
 module.exports = function(config) {
     mongoose.connect(config.db);
@@ -10,4 +11,5 @@ module.exports = function(config) {
     });
 
     userModel.createDefaultUsers();
+    violation.createDefaultViolations();
 };

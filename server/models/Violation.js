@@ -27,6 +27,7 @@ exports.list = function(req, res) {
     Violation.find({}).exec(function(err, collection) {
         res.send(collection);
     })
+
 };
 
 
