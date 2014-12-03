@@ -6,7 +6,7 @@
 		.form-group
 			input.form-control(placeholder="Имя пользовотеля", ng-model="username")
 		.form-group
-			input.form-control(type="password", placeholder="Пароль", ng-model="password")		
+			input.form-control(placeholder="Пароль", type="password", ng-model="password")		
 		button.btn.btn-primary(ng-click="signIn(username,password)") Вход
 	ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
 		li.dropdown

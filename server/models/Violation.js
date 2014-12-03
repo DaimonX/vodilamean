@@ -32,7 +32,15 @@ exports.list = function(req, res) {
 
 
 exports.createNewViolation = function(req, res) {
-   console.console.log('createNewViolation');
+   var violation = new Violation(req.body)
+   console.log('Violation aded ' + JSON.stringify(violation));
+   violation.save(function(err, data){
+   	if (err) {
+      return res.send(err);
+    }
+    res.send({ message: 'Violation aded '+ JSON.stringify(violation)});
+   })
+   
 };
 
 

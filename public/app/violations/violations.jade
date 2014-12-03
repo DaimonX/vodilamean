@@ -5,14 +5,14 @@
 	
 	table.table.table-bordered.table-hover
 		tr
-			th.col-md-1 Марка автомобиля
-			th.col-md-2 Номерной знак
-			th.col-md-2 Описание
-			th.col-md-2 Дата
+			th.col-md-2 Марка автомобиля
+			th.col-sm-1 Номер
+			th.col-md-4 Описание
+			th.col-md-1 Дата
 			th.col-md-2 User
 		tr(ng-repeat="violation in violations")
-			td.col-md-1{{violation.brand +" "+violation.model}}
-			td.col-md-1{{violation.number}}
-			td.col-md-1{{violation.description}}
-			td.col-md-1{{violation.date | date:'yyyy-MM-dd'}}
-			td.col-md-1{{violation.userOwnerID}}
+			td.col-md-2 {{violation.brand +" "+violation.model}}
+			td.col-sm-1 {{violation.number}}
+			td.col-md-4 {{violation.description}}
+			td.col-md-1 {{violation.date | date:'yyyy-MM-dd'}}
+			td.col-md-2 {{violation.userOwnerID}}
