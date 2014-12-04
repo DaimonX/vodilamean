@@ -9,10 +9,10 @@
 			th.col-sm-1 Номер
 			th.col-md-4 Описание
 			th.col-md-1 Дата
-			th.col-md-2 User
+			th.col-md-2 Пользователь
 		tr(ng-repeat="violation in violations")
 			td.col-md-2 {{violation.brand +" "+violation.model}}
 			td.col-sm-1 {{violation.number}}
 			td.col-md-4 {{violation.description}}
-			td.col-md-1 {{violation.date | date:'yyyy-MM-dd'}}
-			td.col-md-2 {{violation.userOwnerID}}
+			td.col-md-1 {{violation.date | date:'dd-MM-yyyy'}}
+			td.col-md-2 {{violation.user}}

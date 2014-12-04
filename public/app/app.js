@@ -1,5 +1,5 @@
 'use strict'
-var app = angular.module('app', ["ngResource", "ngRoute", "ngTable"]);
+var app = angular.module('app', ["ngResource", "ngRoute", "ngTable", "ui.bootstrap"]);
 app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
 

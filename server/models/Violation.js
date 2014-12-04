@@ -16,6 +16,9 @@ var violationSchema = mongoose.Schema({
     date: {
         type: Date
     },
+    user: {
+        type: String
+    },
     userOwnerID: {
     	type: mongoose.Schema.Types.ObjectId
     }
