@@ -1,5 +1,5 @@
 'use strict'
-var app = angular.module('app', ["ngResource", "ngRoute", "ngTable", "ui.bootstrap"]);
+var app = angular.module('app', ["ngResource", "ngRoute", "ngTable", "ui.bootstrap", "uiGmapgoogle-maps"]);
 app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
 

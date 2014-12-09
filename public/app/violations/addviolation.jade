@@ -1,46 +1,56 @@
 .container(ng-controller="dxViolCtrl")
-	.well
-		form.form-horizontal(name="addViolationForm")
-			fieldset
-				h2 Новое Нарушение
-					legend(style="font-size: 16px")
-						.form-group
-							label.col-md-2.control-label(for="brand") Марка автомобиля
-							.col-md-10
-								input.form-control(id="brand" name="brand", type="text", placeholder="марка авто", ng-model="brand", required)
-						.form-group
-							label.col-md-2.control-label(for="model") Модель автомобиля
-							.col-md-10
-								input.form-control(id="model" name="model", type="text", placeholder="модель авто", ng-model="model")
-						.form-group
-							label.col-md-2.control-label(for="number") Номерной знак
-							.col-md-10
-								input.form-control(id="number" name="number", type="text", placeholder="номерной знак", ng-model="number", required)
-						.form-group
-							label.col-md-2.control-label(for="description") Описание нарушения
-							.col-md-10
-								input.form-control(id="description" name="description", type="text", placeholder="описание", ng-model="description", required)
-						.form-group
-							label.col-md-2.control-label(for="dt") Дата проишествия
-							.col-md-10
-								div.input-group
-									input.form-control(type='text',
-														show-button-bar="false",
-														show-weeks="false",
-														datepicker-popup='dd/MM/yyyy',
-														id='dt'
-														name='dt',
-														ng-model="formData.dt",
-														is-open='opened',
-														datepicker-options='dateOptions',
-														ng-required='true',
-														close-text='Close')
-									span.input-group-btn
-										button.btn.btn-default(ng-click='open($event)')
-											i.glyphicon.glyphicon-calendar
+		.well
+			div.row
+				div.col-md-7
+					form.form-horizontal(name="addViolationForm")
+						fieldset
 							.form-group
-							.col-md-10.col-md-offset-2
-								.pull-right
-									button.btn.btn-primary(ng-click="createNewViolation()", ng-disabled="addViolationForm.$invalid") Добавить
-									| &nbsp;
-									a.btn.btn-default(href="/") Отмена
+								label.col-md-2.control-label(for="brand") Марка автомобиля
+								.col-md-10
+									input.form-control(id="brand" name="brand", type="text", placeholder="марка авто", ng-model="brand", required)
+							.form-group
+								label.col-md-2.control-label(for="model") Модель автомобиля
+								.col-md-10
+									input.form-control(id="model" name="model", type="text", placeholder="модель авто", ng-model="model")
+							.form-group
+								label.col-md-2.control-label(for="number") Номерной знак
+								.col-md-10
+									input.form-control(id="number" name="number", type="text", placeholder="номерной знак", ng-model="number", required)
+							.form-group
+								label.col-md-2.control-label(for="description") Описание нарушения
+								.col-md-10
+									textarea.form-control(id="description" name="description", rows="4" type="text", placeholder="описание", ng-model="description", required)
+							.form-group
+								label.col-md-2.control-label(for="dt") Дата проишествия
+								.col-md-10
+									div.input-group
+										input.form-control(type='text',
+															show-button-bar="false",
+															show-weeks="false",
+															datepicker-popup='dd/MM/yyyY',
+															id='dt',
+															name='dt',
+															ng-model="formData.dt",
+															is-open='opened',
+															datepicker-options='dateOptions',
+															ng-required='true',
+															close-text='Close')
+										span.input-group-btn
+											button.btn.btn-default(ng-click='open($event)')
+												i.glyphicon.glyphicon-calendar
+								
+				div.div.col-md-5
+					//- button.btn.btn-primary(ng-click="writeToConsole(marker.coords)")
+					ui-gmap-google-map(center='map.center' zoom='map.zoom')
+						ui-gmap-marker(coords="marker.coords"
+										options="marker.options"
+										events="marker.events"
+										idkey="marker.id")
+				input(type="text" id="latitude" placeholder="latitude" ng-model="lat" disabled)
+				input(type="text" id="longitude" placeholder="longitude" ng-model="lon" disabled)
+				.form-group
+								.col-md-10.col-md-offset-2
+									.pull-right
+										button.btn.btn-primary(ng-click="createNewViolation()", ng-disabled="addViolationForm.$invalid") Добавить
+										| &nbsp;
+										a.btn.btn-default(href="/") Отмена
