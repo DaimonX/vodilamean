@@ -13,6 +13,7 @@ module.exports = function(app) {
   
   app.get('/api/violations', violation.list);
   app.post('/api/violations', violation.createNewViolation);
+  app.get('/api/violations/:id', violation.violation);
 
   app.get('/partials/*', function(req, res) {
     console.log('+ + + + + + + + + + + + + + +  /partials/* + + + + + + + + + + + + + '+req.params[0]);

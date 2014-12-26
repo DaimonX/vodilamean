@@ -5,16 +5,25 @@ angular.module('app')
     })
     .controller('dxViolCtrl', function($scope, $window, $location, dxViolationRes, mvIdentity, mvNotifier) {
         $scope.formData = {};
-        
+        $scope.dxViolCtrl = 'dxViolCtrl';
         $scope.lat = "";
         $scope.lon = "";
 
         $scope.marker = {};
         
-        $scope.writeToConsole = function(coords){
-          alert(JSON.stringify(coords));
-          $scope.lat = coords.latitude;
-          $scope.lon = coords.longitude;
+        $scope.writeToConsole = function(){
+          if (!!$scope.lat & !!$scope.lon) {alert($scope.lat +" "+$scope.lat)};
+          if (!!$scope.lat & !!$scope.lon) {
+              var arr = [$scope.lon, $scope.lat];
+              var newViolationData = {};
+              newViolationData['loc'] ={};
+              newViolationData['loc']['loc2']=arr;
+              alert(JSON.stringify(newViolationData));
+            };
+        };
+
+        $scope.alert = function(){
+            alert("alert");
         };
 
         $scope.map = {
@@ -38,7 +47,7 @@ angular.module('app')
             }
         };
         
-        var onSuccess = function(position) {
+        function onSuccess(position) {
             $scope.map.center = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
@@ -98,30 +107,12 @@ angular.module('app')
         $scope.format = $scope.formats[0];
 
         // alert(JSON.stringify($scope.identity.currentUser));
-
-        
-        $scope.createNewViolation = function() {
-            $scope.identity = mvIdentity;
-            var user = !!$scope.identity.currentUser ? ($scope.identity.currentUser.firstName + " " + $scope.identity.currentUser.lastName) : 'нет';
-            var newViolationData = {
-                brand: $scope.brand,
-                model: $scope.model,
-                number: $scope.number,
-                description: $scope.description,
-                date: $scope.formData.dt,
-                user: user,
-                userOwnerID: $scope.identity.currentUser._id
-            }
-            var newViolationRes = new dxViolationRes(newViolationData);
-            // alert(newViolationData.date);
-            newViolationRes.$save().then(function(success) {
-                if (success) {
-                    mvNotifier.notifySuccess('Нарушение успешно добавлено');
-                    $location.path('/violations');
-                } else {
-                    mvNotifier.notifyError('Сбой добавления нарушения');
-                }
-            });
+        $scope.goViolation = function(violation){
+          alert('goViolation');
+          var hash = '/violations/' + violation._id;
+          $location.url(hash);
         };
+        
+        
         $scope.violations = dxViolationRes.query();
     });

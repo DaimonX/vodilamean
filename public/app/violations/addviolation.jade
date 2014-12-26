@@ -1,11 +1,12 @@
-.container(ng-controller="dxViolCtrl")
+.container
+		h2 Новое нарушение
 		.well
 			div.row
 				div.col-md-7
 					form.form-horizontal(name="addViolationForm")
 						fieldset
 							.form-group
-								label.col-md-2.control-label(for="brand") Марка автомобиля
+								label.col-md-2.control-label(for="brand") Марка автомобиля {{dxAddVar}}
 								.col-md-10
 									input.form-control(id="brand" name="brand", type="text", placeholder="марка авто", ng-model="brand", required)
 							.form-group
@@ -39,8 +40,8 @@
 											button.btn.btn-default(ng-click='open($event)')
 												i.glyphicon.glyphicon-calendar
 								
-				div.div.col-md-5
-					//- button.btn.btn-primary(ng-click="writeToConsole(marker.coords)")
+				div.col-md-5
+					button.btn.btn-primary(ng-click="writeToConsole()")
 					ui-gmap-google-map(center='map.center' zoom='map.zoom')
 						ui-gmap-marker(coords="marker.coords"
 										options="marker.options"
@@ -53,4 +54,4 @@
 									.pull-right
 										button.btn.btn-primary(ng-click="createNewViolation()", ng-disabled="addViolationForm.$invalid") Добавить
 										| &nbsp;
-										a.btn.btn-default(href="/") Отмена
+										a.btn.btn-default(href="/violations") Отмена

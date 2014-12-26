@@ -1,18 +1,26 @@
-.container(ng-controller="dxViolCtrl")
-	h2 Нарушения
-		form.add.pull-right(action="/violations/add")
-			input.btn.btn-primary(type='submit', value='Добавить новое нарушение')
-	
-	table.table.table-bordered.table-hover
-		tr
-			th.col-md-2 Марка автомобиля
-			th.col-sm-1 Номер
-			th.col-md-4 Описание
-			th.col-md-1 Дата
-			th.col-md-2 Пользователь
-		tr(ng-repeat="violation in violations")
-			td.col-md-2 {{violation.brand +" "+violation.model}}
-			td.col-sm-1 {{violation.number}}
-			td.col-md-4 {{violation.description}}
-			td.col-md-1 {{violation.date | date:'dd-MM-yyyy'}}
-			td.col-md-2 {{violation.user}}
+.container
+	h2 container
+	div(ui-view="violations")
+		h2 Нарушения
+			form.add.pull-right
+				a(ui-sref="violations.add")
+					input.btn.btn-primary(type='submit', value='Добавить новое нарушение')
+		
+		//- violations.add '@'
+		//- a(ui-sref="violations.show")
+		//- 	violations.show 'show'
+		//- div(ui-view='show')
+			
+		table.table.table-bordered.table-hover
+			tr
+				th.col-md-2 Марка автомобиля
+				th.col-sm-1 Номер
+				th.col-md-4 Описание
+				th.col-md-1 Дата
+				th.col-md-2 Пользователь
+			tr(ng-repeat="violation in violations" ui-sref="violations.show({id:violation._id})")
+				td.col-md-2 {{violation.brand +" "+violation.model}}
+				td.col-sm-1 {{violation.number}}
+				td.col-md-4 {{violation.description}}
+				td.col-md-1 {{violation.date | date:'dd-MM-yyyy'}}
+				td.col-md-2 {{violation.user}}

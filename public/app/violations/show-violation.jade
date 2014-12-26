@@ -1,0 +1,42 @@
+.container
+		h2 Просмотр нарушения
+		.well
+			div.row
+				div(ng-hide="false").col-md-7
+					p
+						b Авто: 
+						{{show.brand+" "+show.model}}
+					p(class="text-left")
+						b Номер: 
+						{{show.number}}
+					p(class="text-left")
+						b Описание: 
+						{{show.description}}
+					p(class="text-left")
+						b Дата: 
+						{{show.date | date:'dd-MM-yyyy'}}
+					p(class="text-left")
+						b Пользователь: 
+						{{show.user}}
+				div(ng-hide="true").col-md-7
+					input.form-control(id="brand" name="brand", type="text", placeholder="марка авто", ng-model="brand", required)
+					input.form-control(id="model" name="model", type="text", placeholder="модель авто", ng-model="model")
+					input.form-control(id="number" name="number", type="text", placeholder="номерной знак", ng-model="number", required)
+					textarea.form-control(id="description" name="description", rows="4" type="text", placeholder="описание", ng-model="description", required)
+					input(type="text" id="latitude" placeholder="latitude" ng-model="lat" disabled)
+					input(type="text" id="longitude" placeholder="longitude" ng-model="lon" disabled)
+					input(type="text" id="longitude" placeholder="longitude" ng-model="marker.coords" disabled)
+				div.div.col-md-5
+					button.btn.btn-primary(ng-click="alert()")
+					div(ng-if="isGetCoords")
+						ui-gmap-google-map(center='map.center' zoom='map.zoom')
+							ui-gmap-marker(coords="marker.coords"
+											options="marker.options"
+											events="marker.events"
+											idkey="marker.id")
+				.form-group
+								.col-md-10.col-md-offset-2
+									.pull-right
+										button.btn.btn-primary(ng-click="createNewViolation()", ng-disabled="addViolationForm.$invalid") Добавить
+										| &nbsp;
+										a.btn.btn-default(href="/violations") Отмена

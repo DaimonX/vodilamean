@@ -19,6 +19,19 @@ var violationSchema = mongoose.Schema({
     user: {
         type: String
     },
+    loc:{
+        type: {
+            type: String,
+            default:'Point'
+        },
+        coordinates : {
+            type:[Number]
+        },
+        index: {
+            type: String,
+            default:'2d'
+        }
+        },
     userOwnerID: {
     	type: mongoose.Schema.Types.ObjectId
     }
@@ -29,6 +42,13 @@ var Violation = mongoose.model('Violation', violationSchema);
 exports.list = function(req, res) {
     Violation.find({}).exec(function(err, collection) {
         res.send(collection);
+    })
+
+};
+
+exports.violation = function(req, res) {
+    Violation.findOne({_id:req.params.id}).exec(function(err, violation) {
+        res.send(violation);
     })
 
 };
