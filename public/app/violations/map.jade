@@ -1,0 +1,12 @@
+.container
+	h2 Карта нарушений
+	.well
+		div(ng-if="isGetCoords")
+			ui-gmap-google-map(center='map.center' zoom='map.zoom')
+				ui-gmap-markers(coords="'coordinates'"
+							models="listMarkers"
+							icon="'icon'"
+							click="'onClick'"
+							labelContent="'labelTitle'" 
+							labelAnchor="22 0" 
+							options="'options'")

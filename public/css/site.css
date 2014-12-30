@@ -7,7 +7,7 @@ body {
   border-right: solid 2px;
 }
 .navbar-inverse a.navbar-brand {
-  color: #fadede;
+  color: #000;
 }
 .panel.panel-primary {
   margin: 0px 10px 10px 10px;
@@ -90,4 +90,10 @@ textarea {
 }
 label.col-md-2.control-label {
   padding: 0 0 0 0;
+}
+.navbar-inverse .navbar-nav li a {
+  padding-top: 5px;
+}
+ul .navbar-nav {
+  padding-top: 10px;
 }

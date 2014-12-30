@@ -2,11 +2,11 @@
 angular.module('app').factory('dxViolationRes', function($resource){
 	var ViolationResource = $resource('/api/violations/:id', {_id:"@id"},
 	{
-		'create': {method: 'POST'},
-		'index':  {method: 'GET'},
-		'show':   {method: 'GET', isArray: false},
-		'update': {method: 'PUT'},
-		'destroy':{method: 'DELETE'}
+		'create1': {method: 'POST'},
+		'index1':  {method: 'GET'},
+		'show1':   {method: 'GET', isArray: false},
+		'update1': {method: 'PUT'},
+		'destroy1':{method: 'DELETE'}
 	}
 	);
 	 return ViolationResource;
