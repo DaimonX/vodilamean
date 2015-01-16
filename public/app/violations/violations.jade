@@ -1,7 +1,14 @@
 .container
 	//- h2 container
 	div(ui-view="violations")
-		h2 Нарушения
+		div.row
+			h2 Нарушения
+			.col-xs-4.p
+				.input-group.add-on
+					input#srch-term.form-control(type='text', placeholder='Search', name='srch-term')
+					.input-group-btn
+						button.btn.btn-default(type='submit')
+							i.glyphicon.glyphicon-search
 			form.add.pull-right
 				a(ui-sref="violations.add")
 					input.btn.btn-primary(type='submit', value='Добавить новое нарушение')
@@ -13,12 +20,27 @@
 			
 		table.table.table-bordered.table-hover
 			tr
-				th.col-md-2 Марка автомобиля
-				th.col-sm-1 Номер
+				th.col-md-2(ng-click="orderByField = 'brand'; reverseSort = !reverseSort") Марка автомобиля   
+					span(ng-show="orderByField == 'brand'")
+						span(ng-show="reverseSort")
+							i.glyphicon.glyphicon-arrow-up
+						span(ng-show="!reverseSort")
+							i.glyphicon.glyphicon-arrow-down
+				th.col-sm-1(ng-click="orderByField = 'number'; reverseSort = !reverseSort") Номер 
+					span(ng-show="orderByField == 'number'")
+						span(ng-show="reverseSort")
+							i.glyphicon.glyphicon-arrow-up
+						span(ng-show="!reverseSort")
+							i.glyphicon.glyphicon-arrow-down
 				th.col-md-4 Описание
-				th.col-md-1 Дата
+				th.col-md-1(ng-click="orderByField = 'date'; reverseSort = !reverseSort") Номер 
+					span(ng-show="orderByField == 'date'")
+						span(ng-show="reverseSort")
+							i.glyphicon.glyphicon-arrow-up
+						span(ng-show="!reverseSort")
+							i.glyphicon.glyphicon-arrow-down
 				th.col-md-2 Пользователь
-			tr(ng-repeat="violation in violations" ui-sref="violations.show({id:violation._id})")
+			tr(ng-repeat="violation in violations | orderBy:orderByField:reverseSort" ui-sref="violations.show({id:violation._id})")
 				td.col-md-2 {{violation.brand +" "+violation.model}}
 				td.col-sm-1 {{violation.number}}
 				td.col-md-4 {{violation.description}}

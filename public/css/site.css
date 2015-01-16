@@ -40,6 +40,9 @@ button {
   padding-top: 0px;
   margin-left: 10px;
 }
+h2 {
+  float: left;
+}
 h2 form.add {
   display: inline-block;
 }
@@ -96,4 +99,17 @@ label.col-md-2.control-label {
 }
 ul .navbar-nav {
   padding-top: 10px;
+}
+.navbar-right {
+  padding-right: 15px;
+}
+h2,
+p {
+  display: inline;
+}
+.col-xs-4.p {
+  padding-top: 20px;
+}
+.add.pull-right.ng-pristine.ng-valid {
+  padding: 20px 15px 0 0;
 }
