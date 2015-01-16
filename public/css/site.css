@@ -40,9 +40,6 @@ button {
   padding-top: 0px;
   margin-left: 10px;
 }
-h2 {
-  float: left;
-}
 h2 form.add {
   display: inline-block;
 }
@@ -107,9 +104,14 @@ h2,
 p {
   display: inline;
 }
+h2.violations {
+  float: left;
+  margin-top: 0px;
+  padding-top: 10px;
+}
 .col-xs-4.p {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .add.pull-right.ng-pristine.ng-valid {
-  padding: 20px 15px 0 0;
+  padding: 10px 15px 0 0;
 }
