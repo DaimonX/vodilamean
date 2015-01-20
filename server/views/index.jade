@@ -9,11 +9,14 @@ block main-content
 				div(ng-include="'/partials/account/navbar-login'")
 				ul.nav.navbar-nav
 					li
-						a(href="/") Главная
+						a(href="/")
+							img(src="house2.png" alt="Главная")
 					li
-						a(href="/violations") Нарушения
+						a(href="/violations")
+							img(src="findcar.png" alt="Нарушения")
 					li
-						a(ui-sref="violations.map") Карта нарушений
+						a(ui-sref="violations.map")
+							img(src="wmap2.png" alt="Карта нарушений")
 			
 	section.content
 		//- div(ng-view)

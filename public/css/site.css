@@ -115,3 +115,6 @@ h2.violations {
 .add.pull-right.ng-pristine.ng-valid {
   padding: 10px 15px 0 0;
 }
+.navbar {
+  margin-bottom: 0px;
+}
