@@ -5,9 +5,9 @@
 			h2.violations Нарушения
 			.col-xs-4.p
 				.input-group.add-on
-					input#srch-term.form-control(type='text', placeholder='Search', name='srch-term')
+					input#srch-term.form-control(ng-model='searchText', type='text', placeholder='Search', name='srch-term')
 					.input-group-btn
-						button.btn.btn-default(type='submit')
+						button.btn.btn-default(ng-click='search(searchText)', type='submit')
 							i.glyphicon.glyphicon-search
 			form.add.pull-right
 				a(ui-sref="violations.add")

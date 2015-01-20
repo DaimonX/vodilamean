@@ -19,51 +19,66 @@ var violationSchema = mongoose.Schema({
     user: {
         type: String
     },
-    loc:{
+    loc: {
         type: {
             type: String,
-            default:'Point'
+            default: 'Point'
         },
-        coordinates : {
-            type:[Number]
+        coordinates: {
+            type: [Number]
         },
         index: {
             type: String,
-            default:'2d'
+            default: '2d'
         }
-        },
+    },
     userOwnerID: {
-    	type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId
     }
 });
 
 var Violation = mongoose.model('Violation', violationSchema);
 
 exports.list = function(req, res) {
+    var searchText = req.param('search');
+    if (typeof searchText !== "undefined") {
+        Violation.find({ $or:[
+                {brand:{$regex:searchText, $options: '-i'}},
+                {model:{$regex:searchText, $options: '-i'}},
+                {number:{$regex:searchText, $options: '-i'}},
+                {description:{$regex:searchText, $options: '-i'}},
+            ]}).exec(function(err, collection) {
+        res.send(collection);
+    })
+}else {
     Violation.find({}).exec(function(err, collection) {
         res.send(collection);
     })
+}
 
 };
 
 exports.violation = function(req, res) {
-    Violation.findOne({_id:req.params.id}).exec(function(err, violation) {
+        Violation.findOne({
+        _id: req.params.id
+    }).exec(function(err, violation) {
         res.send(violation);
     })
 
 };
 
-
 exports.createNewViolation = function(req, res) {
-   var violation = new Violation(req.body)
-   console.log('Violation aded ' + JSON.stringify(violation));
-   violation.save(function(err, data){
-   	if (err) {
-      return res.send(err);
-    }
-    res.send({ message: 'Violation aded '+ JSON.stringify(violation)});
-   })
-   
+    var violation = new Violation(req.body)
+    console.log('Violation aded ' + JSON.stringify(violation));
+    violation.save(function(err, data) {
+        if (err) {
+            return res.send(err);
+        }
+        res.send({
+            message: 'Violation aded ' + JSON.stringify(violation)
+        });
+    })
+
 };
 
 

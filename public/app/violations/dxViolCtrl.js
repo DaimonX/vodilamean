@@ -22,8 +22,10 @@ angular.module('app')
             };
         };
 
-        $scope.alert = function(){
-            alert("alert");
+        $scope.search = function(searchText){
+            var hash = $location.search('search',searchText).path('/violations').absUrl();
+            $scope.violations = dxViolationRes.query({search:searchText});
+            // $location.url(hash);
         };
 
         $scope.map = {
